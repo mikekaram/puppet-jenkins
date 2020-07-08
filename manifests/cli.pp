@@ -29,7 +29,7 @@ class jenkins::cli {
   $remove_dir = 'rm -rf WEB-INF'
 
   exec { 'jenkins-cli' :
-    command => "${grep_jarname} && ${extract_jar} && ${move_jar} && ${remove_dir}",
+    command => "sh -c '${grep_jarname} && ${extract_jar} && ${move_jar} && ${remove_dir}'",
     path    => ['/bin', '/usr/bin'],
     cwd     => '/tmp',
     creates => $jar,
